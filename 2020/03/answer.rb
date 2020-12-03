@@ -1,8 +1,8 @@
+require '../helpers'
+
 MAP = []
 
-File.readlines("./map.txt").each do |line|
-  MAP << line.strip
-end
+Helpers.process_input("./map.txt") { |line| MAP << line }
 
 def collision?(coordinate)
   coordinate == "#"
@@ -27,13 +27,17 @@ end
 
 # Part 1
 collisions_one = count_collisions(3)
-p collisions_one
 
 # Part 2
-collisions_two_total = count_collisions(1)
-collisions_two_total *= count_collisions(3)
-collisions_two_total *= count_collisions(5)
-collisions_two_total *= count_collisions(7)
-collisions_two_total *= count_collisions(1, 2)
+collisions_two = [
+  count_collisions(1),
+  count_collisions(3),
+  count_collisions(5),
+  count_collisions(7),
+  count_collisions(1, 2)
+].reduce(:*)
 
-p collisions_two_total
+Helpers.print_pretty_answers([
+  collisions_one, # => Part 1 Answer: 198
+  collisions_two # => Part 2 Answer: 5140884672
+])

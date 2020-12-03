@@ -1,26 +1,35 @@
-# Part 1
+require '../helpers'
+
 num_pairs = {}
-File.open("./input.txt").each do |line|
+nums = []
+
+Helpers.process_input do |line|
   i = line.to_i
+
+  # num_pairs used for Part 1
   inverse_value = 2020 - i
   num_pairs[i] = inverse_value
+
+  # nums used for Part 2
+  nums << i
 end
 
-answer = nil
+answer_1 = nil
 
+# Part 1
 num_pairs.each do |num, inverse_value|
   if num_pairs[inverse_value]
-    answer = num_pairs[inverse_value] * inverse_value
+    answer_1 = num_pairs[inverse_value] * inverse_value
     break
   end
 end
 
-p answer
-
 # Part 2
-nums = []
-File.open("./input.txt").each { |line| nums << line.to_i }
-
 combos = nums.combination(3).to_a
 answer_2 = combos.find { |c| c.reduce(:+) == 2020 }
-p answer_2.reduce(:*)
+answer_2 = answer_2.reduce(:*)
+
+Helpers.print_pretty_answers([
+  answer_1, # => Part 1 Answer: 987339
+  answer_2 # => Part 2 Answer: 259521570
+])

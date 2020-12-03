@@ -1,3 +1,5 @@
+require '../helpers'
+
 def part_one_valid?(min:, max:, char:, password:)
   count = password.count(char)
   (min..max).include?(count)
@@ -25,12 +27,14 @@ end
 part_one_answer = 0
 part_two_answer = 0
 
-File.open("./passwords.txt").each do |line|
+Helpers.process_input("./passwords.txt") do |line|
   args = scan_line(line)
 
   part_one_answer += 1 if part_one_valid?(args)
   part_two_answer += 1 if part_two_valid?(args)
 end
 
-puts "Part One Answer: #{part_one_answer}"
-puts "Part Two Answer: #{part_two_answer}"
+Helpers.print_pretty_answers([
+  part_one_answer, # => Part 1 Answer: 447
+  part_two_answer # => Part 2 Answer: 249
+])
