@@ -4,6 +4,11 @@ module Helpers
     f.each { |line| yield(line.strip) }
   end
 
+  def self.process_chunk_input(file_path = "./input.txt")
+    f = File.read(file_path).split("\n\n")
+    f.each { |chunk| yield(chunk) }
+  end
+
   def self.print_pretty_answers(answers)
     answers.each_with_index { |answer, i| print_pretty_answer(answer, i+1) }
   end
