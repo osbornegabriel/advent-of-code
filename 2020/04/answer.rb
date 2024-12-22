@@ -1,4 +1,4 @@
-require '../helpers'
+require '../../helpers'
 
 class PassportScanner
   EYE_COLORS = ["amb", "blu", "brn", "gry", "grn", "hzl", "oth"]

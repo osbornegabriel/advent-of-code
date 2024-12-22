@@ -1,4 +1,4 @@
-require '../helpers'
+require '../../helpers'
 
 def part_one_valid?(min:, max:, char:, password:)
   count = password.count(char)

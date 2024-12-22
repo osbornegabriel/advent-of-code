@@ -1,4 +1,4 @@
-require '../helpers'
+require '../../helpers'
 
 class Tallyer
   ALPHABET = Array("a".."z")

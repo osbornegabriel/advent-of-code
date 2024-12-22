@@ -1,4 +1,4 @@
-require '../helpers'
+require '../../helpers'
 
 num_pairs = {}
 nums = []
