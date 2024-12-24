@@ -1,4 +1,4 @@
-require '../helpers'
+require '../../helpers'
 
 def find_foo(code, max, match)
   rows = Array(0..max)
